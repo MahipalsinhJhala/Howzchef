@@ -1,0 +1,72 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="full_screen_dialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+        <item name="android:windowSoftInputMode">stateUnspecified|adjustPan</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+
+    <style name="MyDialog" parent="@android:style/Theme.Translucent.NoTitleBar">
+        <item name="android:windowAnimationStyle">@style/FadeDialogAnimation</item>
+    </style>
+
+    <style name="FadeDialogAnimation">
+        <item name="android:windowEnterAnimation">@android:anim/fade_in</item>
+        <item name="android:windowExitAnimation">@android:anim/fade_out</item>
+    </style>
+
+    <style name="RatingBar" parent="Theme.AppCompat">
+        <item name="colorControlNormal">@color/yellow</item>
+        <item name="colorControlActivated">@color/light_gray</item>
+    </style>
+
+    <style name="SettingHeader">
+        <item name="android:textSize">@dimen/_12sdp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:padding">@dimen/_10sdp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:background">@color/medium_light_gray</item>
+    </style>
+
+    <style name="SettingLabel">
+        <item name="android:textSize">@dimen/_12sdp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+    <style name="LabelHeader">
+        <item name="android:textColor">@color/red</item>
+        <item name="android:textSize">@dimen/_12sdp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="LabelValue">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">@dimen/_10sdp</item>
+    </style>
+
+    <style name="button_round">
+        <item name="android:background">@drawable/red_round_btn</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/_14sdp</item>
+    </style>
+
+    <style name="button_rect">
+        <item name="android:background">@drawable/red_rect_btn</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/_14sdp</item>
+    </style>
+
+</resources>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:paddingTop="@dimen/_10sdp"
+    android:paddingRight="@dimen/_10sdp"
+    android:paddingLeft="@dimen/_10sdp"
+    android:id="@+id/rl_address_item"
+    >
+
+    <TextView
+        android:id="@+id/tv_label_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/LabelHeader"
+        android:text="Home Address"/>
+
+    <TextView
+        android:id="@+id/tv_address"
+        android:layout_width="wrap_content"
+        android:layout_below="@+id/tv_label_address"
+        android:layout_alignParentLeft="true"
+        android:layout_toLeftOf="@+id/iv_edit"
+        android:text="356, Desire Complex, Dummy Plaza, New Delhi"
+        android:layout_height="wrap_content" />
+
+
+    <ImageView
+        android:id="@+id/iv_edit"
+        android:src="@drawable/white_edit"
+        android:tint="@color/black"
+
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@id/iv_remove"
+        android:padding="@dimen/_5sdp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <ImageView
+        android:id="@+id/iv_remove"
+        android:tint="@color/black"
+        android:padding="@dimen/_5sdp"
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@id/iv_address_default"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/remove_icon"/>
+    
+    <ImageView
+        android:id="@+id/iv_address_default"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/tick_icon"
+        android:visibility="invisible"
+        android:layout_centerVertical="true"
+        />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/tv_address"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:background="@color/light_gray"/>
+</RelativeLayout>

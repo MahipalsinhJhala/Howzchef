@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@android:dimen/app_icon_size"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/red"
+    app:contentInsetStart="0dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/_5sdp">
+
+        <ImageView
+
+            android:layout_centerVertical="true"
+            android:id="@+id/iv_back"
+            android:padding="@dimen/_10sdp"
+            android:src="@drawable/back_white_arrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+        <TextView
+            android:id="@+id/tv_left_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/iv_back"
+            android:text="@string/my_profile"
+            android:visibility="gone"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_14sdp" />
+
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/_14sdp"
+            android:layout_centerInParent="true"
+            android:text="Title"
+            android:textColor="@color/white"/>
+
+        <ImageView
+            android:id="@+id/iv_tool_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:tint="@color/white"
+            android:padding="@dimen/_10sdp"
+            android:visibility="invisible"
+            android:src="@android:drawable/ic_input_add"
+            />
+    </RelativeLayout>
+</android.support.v7.widget.Toolbar>

@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <RelativeLayout
+            android:id="@+id/rl_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/img_profile_bg"
+                android:layout_width="match_parent"
+                android:layout_height="220dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/profile_bg" />
+
+            <ImageView
+                android:id="@+id/img_side_bar"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_margin="10dp"
+                android:padding="5dp"
+                android:src="@drawable/back_round" />
+
+            <ImageView
+                android:id="@+id/img_favourite_bar"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentRight="true"
+                android:layout_margin="10dp"
+                android:padding="5dp"
+                android:src="@drawable/selected_favorite_star" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/img_chef"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="40dp"
+                android:src="@color/red" />
+
+            <TextView
+                android:id="@+id/txt_chef_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/img_chef"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:text="Ria Gupta"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/img_chat"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_below="@+id/img_profile_bg"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="-20dp"
+                android:background="@drawable/chat_icon" />
+
+            <ImageView
+                android:id="@+id/img_call"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_below="@+id/img_profile_bg"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="-20dp"
+                android:layout_toLeftOf="@+id/img_chat"
+                android:background="@drawable/call_icon" />
+
+            <ImageView
+                android:id="@+id/img_mail"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_below="@+id/img_profile_bg"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="-20dp"
+                android:layout_toRightOf="@+id/img_chat"
+                android:background="@drawable/mail_icon" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/txt_chef_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rl_header"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/black" />
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/txt_chef_description"
+            android:layout_margin="10dp"
+            android:background="@color/light_gray" />
+
+        <TextView
+            android:id="@+id/txt_avilable"
+            style="@style/LabelHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/divider"
+            android:layout_marginLeft="10dp"
+            android:text="Available timeing"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txt_available_time"
+            style="@style/LabelValue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_avilable"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:text="Available timeing" />
+
+        <View
+            android:id="@+id/divider_1"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/txt_available_time"
+            android:layout_margin="10dp"
+            android:background="@color/light_gray" />
+
+        <TextView
+            android:id="@+id/_txt_recipes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/divider_1"
+            android:layout_marginLeft="10dp"
+            android:text="Recipes"
+            style="@style/LabelHeader"
+            android:textStyle="bold" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/_txt_recipes"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp" />
+
+        <ProgressBar
+            android:id="@+id/progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="gone" />
+
+    </RelativeLayout>
+
+</layout>

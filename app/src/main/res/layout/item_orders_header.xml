@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/com_facebook_button_login_silver_background_color_pressed"
+    android:padding="@dimen/_15sdp">
+
+    <TextView
+        android:id="@+id/txt_order_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="order#1234"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:layout_toLeftOf="@+id/txt_order_status"/>
+
+    <TextView
+        android:id="@+id/txt_order_price"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="$123"
+        android:textColor="@color/red"
+        android:textStyle="bold"
+        android:layout_below="@+id/txt_order_id"
+        android:layout_marginTop="5dp"
+        android:layout_toLeftOf="@+id/txt_order_status"/>
+
+    <TextView
+        android:id="@+id/txt_order_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Completed"
+        android:textColor="@color/green"
+        android:textStyle="bold"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"/>
+
+</RelativeLayout>

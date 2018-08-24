@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/lyt_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_below="@+id/toolbar"
+            android:id="@+id/recycler_view"
+
+            android:layout_above="@+id/ll_button"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+             />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:gravity="center"
+            android:layout_below="@+id/toolbar"
+            android:layout_above="@id/ll_button"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="No addess found"
+
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12sdp" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/ll_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:orientation="horizontal"
+
+            android:layout_alignParentBottom="true"
+            android:visibility="visible">
+
+            <Button
+                android:id="@+id/btn_add_address"
+                style="@style/button_rect"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Add Address" />
+
+            <Button
+                android:id="@+id/btn_proceed_pay"
+                style="@style/button_rect"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_2sdp"
+                android:layout_weight="1"
+                android:text="Proceed To Pay" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_progress"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clickable="true"
+            android:layout_below="@+id/toolbar"
+            android:layout_above="@+id/ll_button"
+            android:gravity="center"
+            android:visibility="gone">
+
+            <ProgressBar
+                android:id="@+id/progress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </RelativeLayout>
+
+
+</layout>

@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <include
+                android:id="@+id/toolbar"
+                layout="@layout/lyt_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingBottom="@dimen/_10sdp"
+                android:paddingLeft="@dimen/_30sdp"
+                android:paddingRight="@dimen/_30sdp"
+                android:paddingTop="@dimen/_10sdp">
+
+                <ImageView
+                    android:id="@+id/iv_logo"
+                    android:layout_width="@dimen/_100sdp"
+                    android:layout_height="@dimen/_100sdp"
+                    android:layout_centerHorizontal="true"
+                    android:src="@drawable/logo" />
+
+                <TextView
+                    android:id="@+id/tv_invite_msg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/iv_logo"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:gravity="center"
+                    android:text="@string/invite_msg"
+                    android:textSize="@dimen/_12sdp" />
+
+
+                <TextView
+                    android:id="@+id/tv_invite_code"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_invite_msg"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:onClick="onCopyCode"
+                    android:background="@drawable/gray_round_rect"
+                    android:gravity="center"
+                    android:padding="@dimen/_15sdp"
+
+                    android:text="Richard54868"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/_14sdp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_tap_copy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_invite_code"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:gravity="center"
+                    android:text="Tap to copy code in your clip board"
+                    android:textSize="@dimen/_12sdp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_invite_via_following"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_invite_code"
+                        android:layout_centerHorizontal="true"
+                        android:gravity="center"
+                        android:text="Tap to copy code in your clip board"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_12sdp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_20sdp"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:onClick="onShareViaFacebook"
+                            android:background="@drawable/round_rect_fb"
+                            android:text="Facebok"
+                            android:textColor="@color/white" />
+
+                        <Space
+                            android:layout_width="@dimen/_10sdp"
+                            android:layout_height="wrap_content" />
+
+                        <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:onClick="onShareViaWhatsapp"
+                            android:background="@drawable/round_rect_whatsapp"
+                            android:text="Whatsapp"
+                            android:textColor="@color/white" />
+                    </LinearLayout>
+
+                    <Button
+                        style="@style/button_round"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:onClick="onShareViaSMS"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:text="Contact" />
+                </LinearLayout>
+
+            </RelativeLayout>
+        </LinearLayout>
+
+        <ProgressBar
+            android:id="@+id/progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="gone" />
+    </RelativeLayout>
+</layout>

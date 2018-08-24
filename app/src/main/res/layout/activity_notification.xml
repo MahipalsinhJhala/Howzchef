@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/lyt_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <RelativeLayout
+        android:id="@+id/ll_alert_recipe_added"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_50sdp"
+        android:paddingLeft="@dimen/_10sdp"
+        android:paddingRight="@dimen/_10sdp"
+        >
+        <TextView
+            android:id="@+id/tv_alert_recipe_added"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/_14sdp"
+            android:textColor="@color/black"
+            android:layout_centerVertical="true"
+            android:text="@string/alert_me_when_new_recipe_added"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/toggle_on"/>
+        <View
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/dark_gray"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/ll_alert_recipe_change"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_50sdp"
+        android:paddingLeft="@dimen/_10sdp"
+        android:paddingRight="@dimen/_10sdp"
+        >
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_centerVertical="true"
+    android:orientation="vertical">
+        <TextView
+            android:id="@+id/tv_alert_recipe_change"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/_14sdp"
+            android:textColor="@color/black"
+
+            android:text="Alert me when recipe status change"/>
+
+        <TextView
+            android:id="@+id/tv_transit_process"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/_14sdp"
+            android:textColor="@color/dark_gray"
+
+            android:layout_below="@id/tv_alert_recipe_change"
+            android:text="(Inprocess to transit)"/>
+</LinearLayout>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+
+            android:src="@drawable/toggle_off"/>
+        <View
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/dark_gray"/>
+    </RelativeLayout>
+
+</LinearLayout>
+</layout>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clickable="true"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/btn_continue"
+        android:gravity="center"
+        android:padding="@dimen/_10sdp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Thank You!"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/_35sdp"
+             />
+
+        <TextView
+            android:id="@+id/tv_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:gravity="center"
+            android:text="Your order request has been submitted successfully."
+            android:textColor="@color/black"
+            android:textSize="@dimen/_18sdp"
+             />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_continue"
+        style="@style/button_rect"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="Continue" />
+
+</RelativeLayout>
+</layout>

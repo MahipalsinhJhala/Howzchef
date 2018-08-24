@@ -1,0 +1,62 @@
+{
+  "project_info": {
+    "project_number": "18281291795",
+    "firebase_url": "https://houz-chef.firebaseio.com",
+    "project_id": "houz-chef",
+    "storage_bucket": "houz-chef.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:18281291795:android:6969737db79500a1",
+        "android_client_info": {
+          "package_name": "com.houz.chef"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "18281291795-o8ejhidujk05hce5t4bh2t60dldejflm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.houz.chef",
+            "certificate_hash": "0884e993b04c890052f5b5241c26499db7b7e4ad"
+          }
+        },
+        {
+          "client_id": "18281291795-qd62o1fha7l0gcuuqoof7v0mhj4l0t8g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDMKyos6RFSLuUMRHYLiLw2robVHD5AATs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "18281291795-99u748pif8qmd64ad56od9p0l99trquk.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.houz.chef"
+              }
+            },
+            {
+              "client_id": "18281291795-qd62o1fha7l0gcuuqoof7v0mhj4l0t8g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
