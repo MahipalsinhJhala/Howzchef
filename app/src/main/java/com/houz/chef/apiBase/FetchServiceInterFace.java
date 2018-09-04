@@ -21,6 +21,7 @@ import com.houz.chef.modelBean.ProfileResponse;
 import com.houz.chef.modelBean.QuantityUpdateResponse;
 import com.houz.chef.modelBean.ReferralCodeResponse;
 import com.houz.chef.modelBean.SetFavouriteProduct;
+import com.houz.chef.modelBean.UpdateSettingResponse;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -96,6 +97,10 @@ public interface FetchServiceInterFace {
     @Multipart
     @POST("user/add_address/{userID}")
     Observable<AddAddressResponse> addAddress(@Path("userID") int userID, @PartMap Map<String, RequestBody> params);
+
+    @Multipart
+    @POST("update_settings/{userID}")
+    Observable<UpdateSettingResponse> updateSettings(@Path("userID") int userID, @PartMap Map<String, RequestBody> params);
 
     @Multipart
     @POST("user/update_address/{userID}/{address_id}")

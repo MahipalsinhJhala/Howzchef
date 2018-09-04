@@ -33,6 +33,11 @@ public class FrSetting extends BaseFragment implements View.OnClickListener {
         binding = (SettingFragmentBinding) getBindingObj();
         setListener();
         setData();
+        try {
+            Picasso.with(getContext()).load(preferences.getProfileImage()).error(R.drawable.user_placeholder).placeholder(R.drawable.user_placeholder).into(binding.ivUser);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private void setListener() {
@@ -51,11 +56,11 @@ public class FrSetting extends BaseFragment implements View.OnClickListener {
         binding.rlTermCondition.setOnClickListener(this);
     }
 
-    private void setData(){
-        AboutMe aboutMe=preferences.getUserDataPref();
-        binding.tvUserName.setText(aboutMe.getFirst_name()+" "+aboutMe.getLast_name());
+    private void setData() {
+        AboutMe aboutMe = preferences.getUserDataPref();
+        binding.tvUserName.setText(aboutMe.getFirst_name() + " " + aboutMe.getLast_name());
         binding.tvEmail.setText(aboutMe.getEmail());
-        if(aboutMe.getFcm_token()!=null && !aboutMe.getProfile().isEmpty()){
+        if (aboutMe.getFcm_token() != null && !aboutMe.getProfile().isEmpty()) {
             Picasso.with(getContext())
                     .load(aboutMe.getProfile())
                     .placeholder(R.drawable.user_placeholder)
@@ -94,7 +99,7 @@ public class FrSetting extends BaseFragment implements View.OnClickListener {
 
             case R.id.rl_my_address:
                 intent = new Intent(getContext(), ActivityMyAddress.class);
-                intent.putExtra("hidePayment",true);
+                intent.putExtra("hidePayment", true);
                 startActivity(intent);
                 break;
 

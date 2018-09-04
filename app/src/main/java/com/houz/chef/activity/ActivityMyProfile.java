@@ -72,8 +72,10 @@ public class ActivityMyProfile extends BaseActivity implements View.OnClickListe
                     @Override
                     public void onNext(ProfileBean profileBean) {
                         binding.progress.setVisibility(View.GONE);
+
                         try {
                             Picasso.with(context).load(profileBean.getUserBean().getUser().getProfile()).error(R.drawable.user_placeholder).placeholder(R.drawable.user_placeholder).into(binding.ivUser);
+                            preferences.setProfileImage(profileBean.getUserBean().getUser().getProfile());
                         } catch (Exception e) {
                             e.printStackTrace();
                         }

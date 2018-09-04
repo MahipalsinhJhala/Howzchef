@@ -55,14 +55,14 @@ public class DrawerActivity extends AppCompatActivity implements View.OnClickLis
     private Preferences preferences;
     private Context context;
 
-    private ImageView imgProfilePic,img_count;
-    private TextView txtSettings,txt_home,txt_chat,txt_favorite,txt_my_order,txt_notification;
+    private ImageView imgProfilePic, img_count;
+    private TextView txtSettings, txt_home, txt_chat, txt_favorite, txt_my_order, txt_notification;
     private TextView txtLogout;
     private LinearLayout ll_notification;
 
 
     public String oldSelected = "", newSelected = "";
-    private int strTo=0;
+    private int strTo = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,7 +86,11 @@ public class DrawerActivity extends AppCompatActivity implements View.OnClickLis
         mRlyMenuDrawer = (RelativeLayout) findViewById(R.id.rly_menu);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         imgProfilePic = (ImageView) findViewById(R.id.img_profile);
-
+        try {
+            Picasso.with(DrawerActivity.this).load(preferences.getProfileImage()).error(R.drawable.user_placeholder).placeholder(R.drawable.user_placeholder).into(imgProfilePic);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close) {
             @Override
             public void onDrawerOpened(View drawerView) {
@@ -97,7 +101,7 @@ public class DrawerActivity extends AppCompatActivity implements View.OnClickLis
             @Override
             public void onDrawerClosed(View drawerView) {
                 super.onDrawerClosed(drawerView);
-                if(!newSelected.equalsIgnoreCase(oldSelected)) {
+                if (!newSelected.equalsIgnoreCase(oldSelected)) {
                     oldSelected = newSelected;
                     switch (newSelected) {
                         case "Home":
@@ -128,6 +132,7 @@ public class DrawerActivity extends AppCompatActivity implements View.OnClickLis
                     }
                 }
             }
+
             @Override
             public void onDrawerSlide(View drawerView, float slideOffset) {
             }
@@ -160,8 +165,7 @@ public class DrawerActivity extends AppCompatActivity implements View.OnClickLis
 
     @Override
     public void onClick(View view) {
-        switch (view.getId())
-        {
+        switch (view.getId()) {
             case R.id.txt_settings:
                 newSelected = getString(R.string.settings);
                 txtSettings.setTextColor(getResources().getColor(R.color.red));
@@ -172,7 +176,7 @@ public class DrawerActivity extends AppCompatActivity implements View.OnClickLis
                 txt_my_order.setTextColor(getResources().getColor(R.color.black));
                 if (mDrawerLayout != null && mDrawerLayout.isDrawerOpen(mRlyMenuDrawer))
                     mDrawerLayout.closeDrawer(mRlyMenuDrawer);
-            break;
+                break;
 
             case R.id.txt_logout:
                 Preferences preferences = new Preferences(context);
@@ -182,7 +186,7 @@ public class DrawerActivity extends AppCompatActivity implements View.OnClickLis
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
                 finish();
-            break;
+                break;
 
             case R.id.txt_home:
                 newSelected = "Home";
@@ -194,7 +198,7 @@ public class DrawerActivity extends AppCompatActivity implements View.OnClickLis
                 txt_my_order.setTextColor(getResources().getColor(R.color.black));
                 if (mDrawerLayout != null && mDrawerLayout.isDrawerOpen(mRlyMenuDrawer))
                     mDrawerLayout.closeDrawer(mRlyMenuDrawer);
-            break;
+                break;
 
             case R.id.txt_chat:
                 newSelected = "Chat";
@@ -253,9 +257,9 @@ public class DrawerActivity extends AppCompatActivity implements View.OnClickLis
         else
             saveLogiBean = new AboutMe();
 
-            if(!saveLogiBean.getProfile().isEmpty()){
-                Picasso.with(this).load(saveLogiBean.getProfile()).placeholder(R.drawable.user_placeholder).into(imgProfilePic);
-            }
+        /*if (!saveLogiBean.getProfile().isEmpty()) {
+            Picasso.with(this).load(preferences.getProfileImage()).error(R.drawable.user_placeholder).placeholder(R.drawable.user_placeholder).into(imgProfilePic);
+        }*/
     }
 
     public void ToggleDrawer() {
@@ -284,14 +288,14 @@ public class DrawerActivity extends AppCompatActivity implements View.OnClickLis
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
-        if(mDrawerToggle != null)
+        if (mDrawerToggle != null)
             mDrawerToggle.syncState();
     }
 
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
-        if(mDrawerToggle != null)
+        if (mDrawerToggle != null)
             mDrawerToggle.onConfigurationChanged(newConfig);
     }
 
@@ -301,14 +305,14 @@ public class DrawerActivity extends AppCompatActivity implements View.OnClickLis
         try {
             Runtime.getRuntime().gc();
             System.gc();
-        } catch(Exception ignored) {
+        } catch (Exception ignored) {
         }
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if(getFragmentManager().findFragmentById(R.id.container)!=null)
-        getFragmentManager().findFragmentById(R.id.container).onActivityResult(requestCode, resultCode, data);
+        if (getFragmentManager().findFragmentById(R.id.container) != null)
+            getFragmentManager().findFragmentById(R.id.container).onActivityResult(requestCode, resultCode, data);
         super.onActivityResult(requestCode, resultCode, data);
     }
 }

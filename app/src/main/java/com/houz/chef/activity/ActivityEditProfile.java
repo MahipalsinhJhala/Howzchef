@@ -80,6 +80,11 @@ public class ActivityEditProfile extends BaseActivity implements View.OnClickLis
         tvTitle.setText(R.string.edit_profile);
         setListener();
         setData();
+        try {
+            Picasso.with(ActivityEditProfile.this).load(preferences.getProfileImage()).error(R.drawable.user_placeholder).placeholder(R.drawable.user_placeholder).into(binding.ivUser);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private void setListener() {

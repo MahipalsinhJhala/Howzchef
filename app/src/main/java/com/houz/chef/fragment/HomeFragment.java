@@ -199,6 +199,13 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
                 }
             }
         });
+        binding.imgCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, ActivityCart.class);
+                startActivityForResult(intent, Const.CART_DATA_UPDATE);
+            }
+        });
         callgetCart();
 
         binding.llFilter.setOnClickListener(new View.OnClickListener() {

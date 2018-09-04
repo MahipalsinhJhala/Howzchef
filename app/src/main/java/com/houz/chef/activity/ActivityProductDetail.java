@@ -190,7 +190,9 @@ public class ActivityProductDetail extends BaseActivity implements View.OnClickL
             map = new HashMap<>();
             map.put("user_id", "" + preferences.getUserDataPref().getId());
             map.put("product_id", "" + productBean.getId());
-
+            if(productBean.isIs_favourite()){
+                map.put("removeproduct", "Y");
+            }
             binding.progress.setVisibility(View.VISIBLE);
             Observable<SetFavouriteProduct> signupusers = FetchServiceBase.getFetcherService(context)
                     .setFavouriteProduct(CommonUtils.converRequestBodyFromMap(map));
@@ -214,7 +216,6 @@ public class ActivityProductDetail extends BaseActivity implements View.OnClickL
                         public void onNext(SetFavouriteProduct setFavouriteProduct) {
                             binding.progress.setVisibility(View.GONE);
                             if (setFavouriteProduct.getStatus()) {
-
                                 boolean flag=!productBean.isIs_favourite();
                                 productBean.setIs_favourite(flag);
                                 if(productBean.isIs_favourite()) {

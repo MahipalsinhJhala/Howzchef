@@ -78,6 +78,30 @@ public class Preferences {
         return preferences.getString("filterTypeData", "");
     }
 
+    public void setRecipeAdded(int recipeAdded) {
+        SharedPreferences preferences = context.getSharedPreferences(context.getString(R.string.share_key), Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putInt("recipeAdded", recipeAdded);
+        editor.apply();
+    }
+
+    public int getRecipeAdded() {
+        SharedPreferences preferences = context.getSharedPreferences(context.getString(R.string.share_key), Context.MODE_PRIVATE);
+        return preferences.getInt("recipeAdded", 0);
+    }
+
+    public void setRecipeChanged(int recipeChanged) {
+        SharedPreferences preferences = context.getSharedPreferences(context.getString(R.string.share_key), Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putInt("recipeChanged", recipeChanged);
+        editor.apply();
+    }
+
+    public int getRecipeChanged() {
+        SharedPreferences preferences = context.getSharedPreferences(context.getString(R.string.share_key), Context.MODE_PRIVATE);
+        return preferences.getInt("recipeChanged", 0);
+    }
+
     public void setFilterCategoryData(String filterCategoryData) {
         SharedPreferences preferences = context.getSharedPreferences(context.getString(R.string.share_key), Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
@@ -142,5 +166,17 @@ public class Preferences {
         SharedPreferences.Editor editor = preferences.edit();
         editor.putString("sessionToken", null);
         editor.apply();
+    }
+
+    public void setProfileImage(String profileImage) {
+        SharedPreferences preferences = context.getSharedPreferences(context.getString(R.string.share_key), Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString("profileImage", profileImage);
+        editor.apply();
+    }
+
+    public String getProfileImage() {
+        SharedPreferences preferences = context.getSharedPreferences(context.getString(R.string.share_key), Context.MODE_PRIVATE);
+        return preferences.getString("profileImage", "");
     }
 }

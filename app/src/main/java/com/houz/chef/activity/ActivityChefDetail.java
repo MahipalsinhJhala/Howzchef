@@ -181,7 +181,9 @@ public class ActivityChefDetail extends BaseActivity implements View.OnClickList
             map = new HashMap<>();
             map.put("user_id", ""+preferences.getUserDataPref().getId());
             map.put("chef_id", ""+chefBean.getId());
-
+            if(chefBean.isIs_favourite()){
+                map.put("removechef", "Y");
+            }
             binding.progress.setVisibility(View.VISIBLE);
             Observable<SetFavouriteProduct> signupusers = FetchServiceBase.getFetcherService(context)
                     .setFavouriteChef(CommonUtils.converRequestBodyFromMap(map));
@@ -205,7 +207,14 @@ public class ActivityChefDetail extends BaseActivity implements View.OnClickList
                         public void onNext(SetFavouriteProduct setFavouriteProduct) {
                             binding.progress.setVisibility(View.GONE);
                             if (setFavouriteProduct.getStatus()) {
-                                CommonUtils.toast(context,setFavouriteProduct.getMessage());
+                                boolean flag=!chefBean.isIs_favourite();
+                                chefBean.setIs_favourite(flag);
+                                if(chefBean.isIs_favourite()) {
+                                    binding.imgFavouriteBar.setImageResource(R.drawable.favourite_icon_bg);
+                                }else{
+                                    binding.imgFavouriteBar.setImageResource(R.drawable.favorite_star);
+                                }
+                                CommonUtils.toast(context, setFavouriteProduct.getMessage());
                             }
                         }
                     });

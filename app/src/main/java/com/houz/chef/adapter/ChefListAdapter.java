@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,11 +14,23 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.houz.chef.R;
+import com.houz.chef.apiBase.FetchServiceBase;
 import com.houz.chef.interfaces.OnLoadMoreListener;
+import com.houz.chef.modelBean.SetFavouriteProduct;
 import com.houz.chef.modelBean.User;
+import com.houz.chef.utils.CommonUtils;
+import com.houz.chef.utils.Preferences;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
+import rx.Observable;
+import rx.Subscriber;
+import rx.Subscription;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 public class ChefListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private final int VIEW_TYPE_ITEM = 0;
@@ -38,7 +51,7 @@ public class ChefListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
-                if(linearLayoutManager != null) {
+                if (linearLayoutManager != null) {
                     totalItemCount = linearLayoutManager.getItemCount();
                     lastVisibleItem = linearLayoutManager.findLastVisibleItemPosition();
                     if (!isLoading && totalItemCount <= (lastVisibleItem + visibleThreshold)) {
@@ -123,22 +136,72 @@ public class ChefListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         }
     }
 
+    private void callUnfavourite(final int pos) {
+        if (CommonUtils.isInternetOn(context))
+
+        {
+            Preferences preferences = new Preferences(context);
+            Map map = new HashMap<>();
+            map.put("user_id", "" + preferences.getUserDataPref().getId());
+            map.put("chef_id", "" + list.get(pos).getId());
+            map.put("removechef", "Y");
+
+            Observable<SetFavouriteProduct> signupusers = FetchServiceBase.getFetcherService(context)
+                    .setFavouriteChef(CommonUtils.converRequestBodyFromMap(map));
+            Subscription subscription = signupusers.subscribeOn(Schedulers.newThread())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(new Subscriber<SetFavouriteProduct>() {
+                        @Override
+                        public void onCompleted() {
+
+                        }
+
+                        @Override
+                        public void onError(Throwable e) {
+                            e.printStackTrace();
+                            CommonUtils.toast(context, e.getMessage());
+                            Log.e("Favourite Chef error ", "" + e);
+                        }
+
+                        @Override
+                        public void onNext(SetFavouriteProduct setFavouriteProduct) {
+                            if(setFavouriteProduct.getStatus()){
+                                list.remove(pos);
+                                notifyDataSetChanged();
+
+                            }
+                        }
+                    });
+
+        } else {
+            CommonUtils.toast(context, context.getString(R.string.snack_bar_no_internet));
+        }
+    }
+
     private class Header extends RecyclerView.ViewHolder {
         private int pos;
         private TextView txt_location;
         private TextView txt_user_name;
         private ImageView img_user;
+        private ImageView iv_cross;
 
         Header(View v) {
             super(v);
             txt_location = (TextView) v.findViewById(R.id.txt_location);
             txt_user_name = (TextView) v.findViewById(R.id.txt_user_name);
             img_user = (ImageView) v.findViewById(R.id.img_user);
+            iv_cross = v.findViewById(R.id.img_right);
 
+            iv_cross.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    callUnfavourite(pos);
+                }
+            });
             v.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if(list != null && pos >= 0 && pos < list.size() && list.get(pos) != null) {
+                    if (list != null && pos >= 0 && pos < list.size() && list.get(pos) != null) {
 //                        Intent intent = new Intent(context, RequestDetailsActivity.class);
 //                        intent.putExtra(StaticField.ARG_PROJECT_DETAILS, list.get(pos));
 //                        intent.putExtra(StaticField.ARG_SCREEN_TYPE, "NewJob");
@@ -158,9 +221,9 @@ public class ChefListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                             .into(img_user);
                 }
 
-                if(list.get(pos).getName() != null && !TextUtils.isEmpty(list.get(pos).getName()))
+                if (list.get(pos).getName() != null && !TextUtils.isEmpty(list.get(pos).getName()))
                     txt_user_name.setText(list.get(pos).getName());
-                if(list.get(pos).getLastName() != null && !TextUtils.isEmpty(list.get(pos).getLastName()))
+                if (list.get(pos).getLastName() != null && !TextUtils.isEmpty(list.get(pos).getLastName()))
                     txt_location.setText(list.get(pos).getLastName());
             }
         }

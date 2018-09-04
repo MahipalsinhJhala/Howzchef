@@ -50,6 +50,10 @@ public class AboutMe implements Parcelable {
 	@Expose
 	private String fcm_token;
 
+	@SerializedName("is_favourite")
+	@Expose
+	private boolean is_favourite;
+
 	public Integer getId() {
 		return id;
 	}
@@ -232,4 +236,12 @@ public class AboutMe implements Parcelable {
 			return new AboutMe[size];
 		}
 	};
+
+	public boolean isIs_favourite() {
+		return is_favourite;
+	}
+
+	public void setIs_favourite(boolean is_favourite) {
+		this.is_favourite = is_favourite;
+	}
 }
