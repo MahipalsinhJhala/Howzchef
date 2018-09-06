@@ -97,10 +97,10 @@ public class ActivityAddAddress extends BaseActivity implements View.OnClickList
     }
 
     private void checkLocationPermission() {
-        if (CommonUtils.hasPermissions(this, new String[] {android.Manifest.permission.ACCESS_FINE_LOCATION,android.Manifest.permission.ACCESS_COARSE_LOCATION})) {
-                getLocation();
+        if (CommonUtils.hasPermissions(this, new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION, android.Manifest.permission.ACCESS_COARSE_LOCATION})) {
+            getLocation();
 
-        }else{
+        } else {
             RxPermissions rxPermissions1 = new RxPermissions((Activity) context);
             rxPermissions1
                     .requestEach(android.Manifest.permission.ACCESS_FINE_LOCATION)
@@ -121,20 +121,22 @@ public class ActivityAddAddress extends BaseActivity implements View.OnClickList
     }
 
     @SuppressLint("MissingPermission")
-    private void getLocation(){
+    private void getLocation() {
         binding.llProgress.setVisibility(View.VISIBLE);
         mFusedLocationClient.getLastLocation().addOnSuccessListener(this, new OnSuccessListener<Location>() {
             @Override
             public void onSuccess(Location location) {
-                ActivityAddAddress.this.location=location;
+                ActivityAddAddress.this.location = location;
 
                 Geocoder gc = new Geocoder(context);
-                if(gc.isPresent()){
+                if (gc.isPresent()) {
                     List<android.location.Address> list = null;
                     try {
-                     list = gc.getFromLocation(location.getLatitude(), location.getLongitude(),1);
+                        if (location == null)
+                            return;
+                        list = gc.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
 
-                    android.location.Address address = list.get(0);
+                        android.location.Address address = list.get(0);
                         binding.edtAddress1.setText(address.getPremises());
                         binding.edtAddress2.setText(address.getSubLocality());
                         binding.edtCity.setText(address.getSubAdminArea());
@@ -150,7 +152,6 @@ public class ActivityAddAddress extends BaseActivity implements View.OnClickList
 
         });
     }
-
 
 
     private void setData() {
@@ -247,7 +248,7 @@ public class ActivityAddAddress extends BaseActivity implements View.OnClickList
 
         HashMap<String, String> map = new HashMap<>();
         map.put("address", params.toString());
-        map.put("is_default", ""+addAddressBean.getIsDefault());
+        map.put("is_default", "" + addAddressBean.getIsDefault());
         Map<String, RequestBody> requestBodyHashMap = CommonUtils.converRequestBodyFromMap(map);
         if (CommonUtils.isInternetOn(context)) {
 
@@ -278,7 +279,7 @@ public class ActivityAddAddress extends BaseActivity implements View.OnClickList
                             if (addAddressResponse.isStatus()) {
                                 AddAddressBean addAddressBean = addAddressResponse.getAddAddressBean();
                                 Intent intent = new Intent();
-                                intent.putExtra(Const.POSITION,position);
+                                intent.putExtra(Const.POSITION, position);
                                 intent.putExtra(Const.EXTRA_OBJ, addAddressBean);
                                 setResult(Activity.RESULT_OK, intent);
                                 finish();
@@ -381,11 +382,11 @@ public class ActivityAddAddress extends BaseActivity implements View.OnClickList
                 CommonUtils.hideKeyboard(v);
                 if (addAddressBean == null) {
 
-                    if(checkValidation()) {
+                    if (checkValidation()) {
                         callAddAddressAPI();
                     }
                 } else {
-                    if(checkValidation()) {
+                    if (checkValidation()) {
                         callUpdateAddressAPI();
                     }
                 }
@@ -397,9 +398,9 @@ public class ActivityAddAddress extends BaseActivity implements View.OnClickList
 
             case R.id.btn_location:
 
-                if(CommonUtils.canGetLocation(this)) {
+                if (CommonUtils.canGetLocation(this)) {
                     checkLocationPermission();
-                }else{
+                } else {
                     CommonUtils.showSettingsAlert(this);
                 }
                 break;

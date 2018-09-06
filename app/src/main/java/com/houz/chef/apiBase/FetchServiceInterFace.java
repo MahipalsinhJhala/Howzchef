@@ -109,8 +109,8 @@ public interface FetchServiceInterFace {
     @POST("user/delete_address/{userID}/{address_id}")
     Observable<ModelBean> deleteAddress(@Path("userID") int userID, @Path("address_id") int address_id);
 
-    @POST("cart/mycart/remove/{id}")
-    Observable<ModelBean> removeCartItem(@Path("id") int id);
+    @POST("cart/mycart/remove/{uid}/{id}")
+    Observable<ModelBean> removeCartItem(@Path("uid") int uid,@Path("id") int id);
 
     @Multipart
     @POST("promocodes/check_promo")

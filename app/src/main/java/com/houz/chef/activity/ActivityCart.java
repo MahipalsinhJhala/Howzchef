@@ -261,7 +261,7 @@ public class ActivityCart extends BaseActivity implements View.OnClickListener, 
 
             binding.progress.setVisibility(View.VISIBLE);
             Observable<ModelBean> signupusers = FetchServiceBase.getFetcherService(context)
-                    .removeCartItem(item.getId());
+                    .removeCartItem(preferences.getUserDataPref().getId(),item.getId());
             subscription = signupusers.subscribeOn(Schedulers.newThread())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(new Subscriber<ModelBean>() {
@@ -288,6 +288,8 @@ public class ActivityCart extends BaseActivity implements View.OnClickListener, 
                                 if (cartAdapter.getItemCount() == 0) {
                                     finishActivity();
                                 }
+                            }else {
+                                CommonUtils.toast(ActivityCart.this,modelBean.getMessage());
                             }
                         }
                     });
